@@ -1,5 +1,6 @@
 package com.gageshan.miaosha.config;
 
+import com.gageshan.miaosha.access.UserContext;
 import com.gageshan.miaosha.model.User;
 import com.gageshan.miaosha.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -50,20 +51,20 @@ public class UserResolver implements HandlerMethodArgumentResolver {
                                   ModelAndViewContainer modelAndViewContainer,
                                   NativeWebRequest nativeWebRequest,
                                   WebDataBinderFactory webDataBinderFactory) throws Exception {
-        HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
-        HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
-        String parameterToken = request.getParameter(UserService.COOKIE_NAME_TOKEN);
-        String cookieToken = getCookieValue(request,UserService.COOKIE_NAME_TOKEN);
+//        HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
+//        HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
+//        String parameterToken = request.getParameter(UserService.COOKIE_NAME_TOKEN);
+//        String cookieToken = getCookieValue(request,UserService.COOKIE_NAME_TOKEN);
+//
+//        if(StringUtils.isBlank(parameterToken) && StringUtils.isBlank(cookieToken)) {
+//            return null;
+//        }
 
-        if(StringUtils.isBlank(parameterToken) && StringUtils.isBlank(cookieToken)) {
-            return null;
-        }
-
-        String token = StringUtils.isBlank(parameterToken) ? cookieToken : parameterToken;
+//        String token = StringUtils.isBlank(parameterToken) ? cookieToken : parameterToken;
 //        log.info(token);
-        User user = userService.getByToken(response, token);
+//        User user = userService.getByToken(response, token);
 //        log.info(user.toString());
-        return user;
+        return UserContext.getUser();
     }
 
     private String getCookieValue(HttpServletRequest request, String cookieNameToken) {

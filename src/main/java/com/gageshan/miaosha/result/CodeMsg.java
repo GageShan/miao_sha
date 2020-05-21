@@ -17,6 +17,8 @@ public class CodeMsg {
     public static CodeMsg MOBILE_NOT_EXIST = new CodeMsg(500102,"用户不存在");
     public static CodeMsg PASSWORD_ERROR = new CodeMsg(500103,"密码错误");
     public static  CodeMsg SESSION_ERROR = new CodeMsg(500104,"session不存在");
+    public static  CodeMsg REQUEST_ILLEGAL = new CodeMsg(500105,"请求非法");
+    public static  CodeMsg ACCESS_LIMIT_REACHED = new CodeMsg(500106,"访问太过频繁");
 
     public static CodeMsg MIAO_SHA_OVER = new CodeMsg(500201,"秒杀商品售空");
     public static CodeMsg REPEATE_MIAOSHA = new CodeMsg(500202,"已秒杀该商品");
